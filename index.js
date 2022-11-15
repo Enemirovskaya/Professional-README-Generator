@@ -36,7 +36,7 @@ inquirer.prompt([
     },
     {
         type: "input",
-        name: "contributing",
+        name: "contribution",
         message: "What are contibution guidelines? "
     },
     {
@@ -64,42 +64,43 @@ inquirer.prompt([
     title,
     instalation,
     instructions,
-    credit,
     license,
     git,
     linkedin,
     email,
-    usage,
     contribution
 
 })=>{
     // templates
-    const template = ` #${title}
-    *[Instalation](#instalation)
-    *[Usage](#usage)
-    *[Contribution](#contribution)
-    *[Credits](#credits)
-    *[License](#license)
-    # Instalation ${instalation}
-    ## Usage ${usage}
-    ## Contribution ${contribution}
-    ### Instructions ${instructions}
-    ## Credits ${credit}
-    ##License ${license}
-    
-    #Contact
-    * GitHub :${git}
-    * Linkedin :${linkedin}
-    * Email :${email}`;
+    const template = `${title}
+
+* [Instalation](#instalation)
+
+* [Usage](#usage)
+
+* [Contribution](#contribution)
+
+* [Credits](#credits)
+
+* [License](#license)
+
+## Instalation ${instalation}
+## Contribution ${contribution}
+### Instructions ${instructions}
+## License ${license}
+## Contact
+* GitHub : ${git}
+* Linkedin : ${linkedin}
+* Email : ${email}`;
     
     // Function to write README file using fs
-    writeToFile(title,template);
+    writeToFile(template);
 
 }
 );
 // function createNewFile(fileName, data){
-    function writeToFile(fileName, data){
-    fs.writeFile(`./${fileName.join("")}.md`,data,()=>{
+    function writeToFile(data){
+    fs.writeFile("example-README.md",data,(err)=>{
      if(err){
         console.log(err)
      }
@@ -108,41 +109,3 @@ inquirer.prompt([
         
 }
 
-
-
-
-
-
-// , will place this in function init
-//
-
-// // Create a function to initialize
-// function init(){
-//     // prompt method calls in array of questions
-//     inquirer.prompt(questions)
-//     // answers function takes answer responses and writes to readme 
-//     .then((answers)=>{
-//         console.log(answers);
-//         const response = generateMarkdown(answers);
-//         writeToFile("README.md", response);
-    
-//     });
-// }
-// init();
-
-
-
-
-// // TODO: Include packages needed for this application
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
